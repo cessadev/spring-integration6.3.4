@@ -2,7 +2,7 @@
 
 ## **Descripción**
 
-Este proyecto es una **demostración práctica** del uso de **Spring Integration** para consumir datos de una API externa en un entorno empresarial. La aplicación consulta la API REST de **COVID-19** cada 24 horas para obtener estadísticas por país, guarda los datos en una **base de datos H2** en memoria, y envía **alertas automáticas** si el número de casos supera un umbral crítico. 
+Este proyecto es una **demostración práctica** del uso de **Spring Integration** para consumir datos de una API. La aplicación consulta la API REST de **COVID-19** cada 24 horas para obtener estadísticas por país, guarda los datos en una **base de datos H2** en memoria, y envía **alertas automáticas** si el número de casos supera un umbral crítico. 
 
 El proyecto demuestra cómo Spring Integration permite **encapsular flujos de procesamiento** mediante mensajes, canales y transformaciones, lo que facilita la integración fluida de servicios externos en aplicaciones empresariales.
 
@@ -78,7 +78,3 @@ Respuesta de la API:
 
 ## **Licencia**
 Este proyecto se distribuye bajo la **MIT License**.  
-
----
-
-Esta descripción proporciona una visión clara del propósito, la tecnología y los pasos para ejecutar la demo, además de sugerir mejoras futuras. ¿Te gustaría añadir algo más?
