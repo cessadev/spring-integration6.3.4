@@ -16,7 +16,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @Entity
 @Table(name = "covid_reports")
-public class CovidReport {
+public class CovidReportEntity {
 
     @Id
     private String country;
@@ -27,7 +27,7 @@ public class CovidReport {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof CovidReport that)) return false;
+        if (!(o instanceof CovidReportEntity that)) return false;
         return cases == that.cases && deaths == that.deaths && recovered == that.recovered && Objects.equals(country, that.country);
     }
 
