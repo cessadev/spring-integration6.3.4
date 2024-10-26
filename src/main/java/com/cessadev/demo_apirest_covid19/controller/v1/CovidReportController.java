@@ -23,8 +23,8 @@ public class CovidReportController {
     }
 
     /*
-    * http://localhost:8080/covid/reports
-    */
+     * http://localhost:8080/covid/reports
+     */
     @GetMapping("/reports")
     public List<CovidReportDTO> getAllReports() {
         return covidReportService.findAllReports();

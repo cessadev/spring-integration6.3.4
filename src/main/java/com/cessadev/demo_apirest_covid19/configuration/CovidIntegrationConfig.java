@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.channel.DirectChannel;
+import org.springframework.integration.config.EnableIntegration;
 import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.http.outbound.HttpRequestExecutingMessageHandler;
 import org.springframework.messaging.MessageChannel;
@@ -17,6 +18,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @Configuration
 @EnableScheduling
+@EnableIntegration
 public class CovidIntegrationConfig {
 
     private final ICovidReportService covidReportService;
@@ -31,24 +33,24 @@ public class CovidIntegrationConfig {
     }
 
     @Bean
+    public MessageChannel covidResponseChannel() {
+        return new DirectChannel();
+    }
+
+    @Bean
     public IntegrationFlow covidReportFlow() {
-        return f -> f.channel(covidInputChannel())  // Escucha en covidInputChannel
-                .handle(httpOutboundGateway()); // Envía la solicitud HTTP
+        return f -> f.channel(covidInputChannel())  // Listen on covidInputChannel
+                .handle(httpOutboundGateway()); // Send HTTP request
     }
 
     @Bean
     public MessageHandler httpOutboundGateway() {
         HttpRequestExecutingMessageHandler handler =
-                new HttpRequestExecutingMessageHandler("https://disease.sh/v3/covid-19/countries/USA");
+                new HttpRequestExecutingMessageHandler("https://disease.sh/v3/covid-19/countries/Colombia");
         handler.setHttpMethod(HttpMethod.GET);
         handler.setExpectedResponseType(String.class);
         handler.setOutputChannel(covidResponseChannel());  // Channel to process the response
         return handler;
-    }
-
-    @Bean
-    public MessageChannel covidResponseChannel() {
-        return new DirectChannel();
     }
 
     @ServiceActivator(inputChannel = "covidResponseChannel")
