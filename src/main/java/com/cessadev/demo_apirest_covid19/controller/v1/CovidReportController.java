@@ -22,11 +22,17 @@ public class CovidReportController {
         this.covidInputChannel = covidInputChannel;
     }
 
+    /*
+    * http://localhost:8080/covid/reports
+    */
     @GetMapping("/reports")
     public List<CovidReportDTO> getAllReports() {
         return covidReportService.findAllReports();
     }
 
+    /*
+     * http://localhost:8080/covid/trigger
+     */
     @GetMapping("/trigger")
     public String triggerCovidFlow() {
         // We send an empty message to the input channel to start the flow.
