@@ -1,58 +1,58 @@
 # 🦠 COVID-19 Data Integration Demo using Spring Integration
 
-## **Descripción**
+## **Description**
 
-Este proyecto es una **demostración práctica** del uso de **Spring Integration** para consumir datos de una API. La aplicación consulta la API REST de **COVID-19** cada 24 horas para obtener estadísticas por país, guarda los datos en una **base de datos H2** en memoria, y envía **alertas automáticas** si el número de casos supera un umbral crítico. 
+This project is a **practical demonstration** of using **Spring Integration** to consume data from an API. The application queries the **COVID-19 REST API** every 24 hours to retrieve country-specific statistics, stores the data in an **in-memory H2 database**, and sends **automatic alerts** if the number of cases exceeds a critical threshold.
 
-El proyecto demuestra cómo Spring Integration permite **encapsular flujos de procesamiento** mediante mensajes, canales y transformaciones, lo que facilita la integración fluida de servicios externos en aplicaciones empresariales.
-
----
-
-## **Características**
-- **Consumo de APIs REST** usando un flujo automatizado con Spring Integration.
-- **Persistencia de datos** en H2 (base de datos en memoria).
-- **Alertas automáticas** si los casos de COVID-19 superan un límite definido.
-- **Manejo de errores** al consumir servicios externos.
-- **Endpoint REST adicional** para ejecutar el flujo de forma manual.
+The project showcases how Spring Integration enables **encapsulation of processing flows** through messages, channels, and transformations, facilitating seamless integration of external services into enterprise applications.
 
 ---
 
-## **Tecnologías utilizadas**
-- **Spring Boot** (2.x / 3.x)
+## **Features**
+- **REST API consumption** using an automated flow with Spring Integration.
+- **Data persistence** in an in-memory H2 database.
+- **Automatic alerts** when COVID-19 cases exceed a defined limit.
+- **Error handling** when consuming external services.
+- **Additional REST endpoint** to trigger the flow manually.
+
+---
+
+## **Technologies Used**
+- **Spring Boot** (3.x)
 - **Spring Integration**
 - **Spring Data JPA**
 - **H2 Database**
-- **API REST de COVID-19**: [https://disease.sh](https://disease.sh)
+- **COVID-19 REST API**: [https://disease.sh](https://disease.sh)
 
 ---
 
-## **Cómo ejecutar el proyecto**
-1. **Clonar el repositorio**:
+## **How to Run the Project**
+1. **Clone the repository**:
    ```bash
-   git clone https://github.com/tu-usuario/covid-integration-demo.git
-   cd covid-integration-demo
+   git clone https://github.com/cessadev/spring-integration6.3.4.git
+   cd spring-integration6.3.4-main
    ```
 
-2. **Construir y ejecutar**:
+2. **Build and run the application**:
    ```bash
    ./mvnw spring-boot:run
    ```
 
-3. **Acceder a la consola H2** para verificar los datos guardados:
+3. **Access the H2 Console** to verify the stored data:
    - URL: [http://localhost:8080/h2-console](http://localhost:8080/h2-console)  
    - JDBC URL: `jdbc:h2:mem:testdb`
-   - Usuario: `sa` (sin contraseña)
+   - User: `sa` (no password)
 
-4. **Forzar la ejecución manual del flujo**:
+4. **Manually trigger the flow**:
    - **GET**: [http://localhost:8080/covid/trigger](http://localhost:8080/covid/trigger)
 
 ---
 
-## **Ejemplo de Datos**
-Respuesta de la API:
+## **Sample Data**
+API response:
 ```json
 {
-  "country": "USA",
+  "country": "Colombia",
   "cases": 100500,
   "deaths": 1200,
   "recovered": 98500
@@ -61,20 +61,20 @@ Respuesta de la API:
 
 ---
 
-## **Flujo de Integración**
-1. **Consulta de datos**: La API de COVID-19 se consume cada 24 horas.
-2. **Transformación**: La respuesta JSON se convierte en un objeto `CovidReport`.
-3. **Persistencia**: El reporte se guarda en la base de datos.
-4. **Alerta**: Si los casos superan los 100,000, se envía una alerta en la consola.
+## **Integration Flow**
+1. **Data Query**: The COVID-19 API is queried every 24 hours.
+2. **Transformation**: The JSON response is converted into a `CovidReport` object.
+3. **Persistence**: The report is saved to the database.
+4. **Alert**: If cases exceed 100,000, an alert is logged to the console.
 
 ---
 
-## **Mejoras Futuras**
-- Envío de alertas por **correo electrónico** o **mensajería**.
-- Implementación de **Kafka** para manejar reportes en tiempo real.
-- Integración con un **dashboard** para mostrar los datos.
+## **Future Improvements**
+- Sending alerts via **email** or **messaging services**.
+- Implementing **Kafka** to handle real-time reports.
+- Integration with a **dashboard** to display data visually.
 
 ---
 
-## **Licencia**
-Este proyecto se distribuye bajo la **MIT License**.  
+## **License**
+This project is distributed under the **MIT License**.  
