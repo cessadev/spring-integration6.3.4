@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.channel.DirectChannel;
+import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.http.outbound.HttpRequestExecutingMessageHandler;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHandler;
@@ -27,6 +28,12 @@ public class CovidIntegrationConfig {
     @Bean
     public MessageChannel covidInputChannel() {
         return new DirectChannel();
+    }
+
+    @Bean
+    public IntegrationFlow covidReportFlow() {
+        return f -> f.channel(covidInputChannel())  // Escucha en covidInputChannel
+                .handle(httpOutboundGateway()); // Envía la solicitud HTTP
     }
 
     @Bean
