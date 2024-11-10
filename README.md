@@ -30,7 +30,7 @@ The project showcases how Spring Integration enables **encapsulation of processi
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/cessadev/spring-integration6.3.4.git
-   cd spring-integration6.3.4-main
+   cd spring-integration6.3.4
    ```
 
 2. **Build and run the application**:
@@ -77,4 +77,4 @@ API response:
 ---
 
 ## **License**
-This project is distributed under the **MIT License**.  
+This project is distributed under the **MIT License**.
